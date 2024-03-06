@@ -1,0 +1,24 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: mediumpurple;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: black;
+}

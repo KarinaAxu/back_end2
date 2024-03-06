@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/todos/style.css">
+    <title>Todos</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="field-wrapper">
+        {{field.label_tag}} {{ field }}
+        <div class="text-danger">
+            {{ field.errors }}
+        </div>
+        </div>
+    {% endfor%}
+
+    {% if status in forms == 1 %}
+        <p style="color: darkgreen">Connect</p>
+    {% endif %}
+
+    {% if status in forms == 0 %}
+        <p style="color: darkred">Disconnect</p>
+    {% endif %}
+
+    <div>
+        <button style="background-color: blueviolet; color: white; border-radius: 5px" type="submit">Create Todo</button>
+    </div>
+</form>
+    <h1>Todo List</h1>
+        {% if error|length %}
+            <b><p style="color: darkred;">{{ error }}</p></b>
+        {% endif %}
+        {% if todos|length > 0 %}
+            <ul>
+                {% for todo in todos %}
+                    <li>ID: {{ todo.id }} - {{ todo.title }} <a href="/todos/{{ todo.id }}/delete">
+                        <button style="background-color: blueviolet; color: white; border-radius: 5px">Delete</button>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Todos Not Found</p>
+        {% endif %}
+</body>
+</html>
